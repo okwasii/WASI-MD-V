@@ -11,6 +11,9 @@
       "stop": "pm2 stop Itxxwasi"
       
    },
+   "engines": {
+        "node": ">=20.0.0"
+   },
    "author": "Itxxwasi",
    "license": "Apache-2.0",
    "dependencies": {
