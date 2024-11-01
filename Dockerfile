@@ -1,15 +1,11 @@
-FROM quay.io/sampandey001/secktor
+FROM node:14
 
-RUN git clone https://github.com/Itxxwasi/WASI-MD-V.git /root/Itxxwasi
+WORKDIR /app
 
-# Clear npm cache and remove node_modules directories
-RUN npm cache clean --force
-RUN rm -rf /root/Itxxwasi/node_modules
+COPY package.json yarn.lock ./
 
-# Install dependencies
-WORKDIR /root/Itxxwasi
-RUN npm install
+RUN yarn install --frozen-lockfile
 
-# Add additional Steps To Run...
-EXPOSE 3000
-CMD ["npm","start" ]
+COPY . .
+
+CMD ["npm ", "start"]
