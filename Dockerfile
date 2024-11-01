@@ -1,11 +1,11 @@
-FROM node:14
+FROM node:16
 
-WORKDIR /app
+COPY package*.json ./
 
-COPY package.json yarn.lock ./
-
-RUN yarn install --frozen-lockfile
+WORKDIR /opt/server/backend-test
 
 COPY . .
 
-CMD ["npm ", "start"]
+RUN npm install
+EXPOSE 8080
+CMD [ "node", "index.js" ]
